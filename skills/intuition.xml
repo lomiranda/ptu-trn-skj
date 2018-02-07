@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="spiritIntuitionLevel">
+  <event name="onChange">
+    if (sheet.spiritIntuitionLevel == "1") then
+    sheet.spiritIntuitionDice = "1d6";
+
+    elseif (sheet.spiritIntuitionLevel == "2") then
+    sheet.spiritIntuitionDice = "2d6";
+
+    elseif (sheet.spiritIntuitionLevel == "3") then
+    sheet.spiritIntuitionDice = "3d6";
+
+    elseif (sheet.spiritIntuitionLevel == "4") then
+    sheet.spiritIntuitionDice = "4d6";
+
+    elseif (sheet.spiritIntuitionLevel == "5") then
+    sheet.spiritIntuitionDice = "5d6";
+
+    elseif (sheet.spiritIntuitionLevel == "6") then
+    sheet.spiritIntuitionDice = "6d6";
+
+    else
+    sheet.spiritIntuitionDice = "";
+
+    end;
+
+  </event>
+</dataLink>

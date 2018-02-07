@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="spiritCharmLevel">
+  <event name="onChange">
+    if (sheet.spiritCharmLevel == "1") then
+    sheet.spiritCharmDice = "1d6";
+
+    elseif (sheet.spiritCharmLevel == "2") then
+    sheet.spiritCharmDice = "2d6";
+
+    elseif (sheet.spiritCharmLevel == "3") then
+    sheet.spiritCharmDice = "3d6";
+
+    elseif (sheet.spiritCharmLevel == "4") then
+    sheet.spiritCharmDice = "4d6";
+
+    elseif (sheet.spiritCharmLevel == "5") then
+    sheet.spiritCharmDice = "5d6";
+
+    elseif (sheet.spiritCharmLevel == "6") then
+    sheet.spiritCharmDice = "6d6";
+
+    else
+    sheet.spiritCharmDice = "";
+
+    end;
+
+  </event>
+</dataLink>

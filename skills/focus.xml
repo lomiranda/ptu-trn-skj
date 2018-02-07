@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="spiritFocusLevel">
+  <event name="onChange">
+    if (sheet.spiritFocusLevel == "1") then
+    sheet.spiritFocusDice = "1d6";
+
+    elseif (sheet.spiritFocusLevel == "2") then
+    sheet.spiritFocusDice = "2d6";
+
+    elseif (sheet.spiritFocusLevel == "3") then
+    sheet.spiritFocusDice = "3d6";
+
+    elseif (sheet.spiritFocusLevel == "4") then
+    sheet.spiritFocusDice = "4d6";
+
+    elseif (sheet.spiritFocusLevel == "5") then
+    sheet.spiritFocusDice = "5d6";
+
+    elseif (sheet.spiritFocusLevel == "6") then
+    sheet.spiritFocusDice = "6d6";
+
+    else
+    sheet.spiritFocusDice = "";
+
+    end;
+
+  </event>
+</dataLink>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="mindOccEdLevel">
+  <event name="onChange">
+    if (sheet.mindOccEdLevel == "1") then
+    sheet.mindOccEdDice = "1d6";
+
+    elseif (sheet.mindOccEdLevel == "2") then
+    sheet.mindOccEdDice = "2d6";
+
+    elseif (sheet.mindOccEdLevel == "3") then
+    sheet.mindOccEdDice = "3d6";
+
+    elseif (sheet.mindOccEdLevel == "4") then
+    sheet.mindOccEdDice = "4d6";
+
+    elseif (sheet.mindOccEdLevel == "5") then
+    sheet.mindOccEdDice = "5d6";
+
+    elseif (sheet.mindOccEdLevel == "6") then
+    sheet.mindOccEdDice = "6d6";
+
+    else
+    sheet.mindOccEdDice = "";
+
+    end;
+
+  </event>
+</dataLink>

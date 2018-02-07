@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="bodyStealthLevel">
+  <event name="onChange">
+    if (sheet.bodyStealthLevel == "1") then
+    sheet.bodyStealthDice = "1d6";
+
+    elseif (sheet.bodyStealthLevel == "2") then
+    sheet.bodyStealthDice = "2d6";
+
+    elseif (sheet.bodyStealthLevel == "3") then
+    sheet.bodyStealthDice = "3d6";
+
+    elseif (sheet.bodyStealthLevel == "4") then
+    sheet.bodyStealthDice = "4d6";
+
+    elseif (sheet.bodyStealthLevel == "5") then
+    sheet.bodyStealthDice = "5d6";
+
+    elseif (sheet.bodyStealthLevel == "6") then
+    sheet.bodyStealthDice = "6d6";
+
+    else
+    sheet.bodyStealthDice = "";
+
+    end;
+
+  </event>
+</dataLink>

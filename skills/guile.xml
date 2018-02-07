@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="mindGuileLevel">
+  <event name="onChange">
+    if (sheet.mindGuileLevel == "1") then
+    sheet.mindGuileDice = "1d6";
+
+    elseif (sheet.mindGuileLevel == "2") then
+    sheet.mindGuileDice = "2d6";
+
+    elseif (sheet.mindGuileLevel == "3") then
+    sheet.mindGuileDice = "3d6";
+
+    elseif (sheet.mindGuileLevel == "4") then
+    sheet.mindGuileDice = "4d6";
+
+    elseif (sheet.mindGuileLevel == "5") then
+    sheet.mindGuileDice = "5d6";
+
+    elseif (sheet.mindGuileLevel == "6") then
+    sheet.mindGuileDice = "6d6";
+
+    else
+    sheet.mindGuileDice = "";
+
+    end;
+
+  </event>
+</dataLink>

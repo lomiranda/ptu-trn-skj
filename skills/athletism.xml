@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="bodyAthleticsLevel">
+  <event name="onChange">
+    if (sheet.bodyAthleticsLevel == "1") then
+    sheet.bodyAthleticsDice = "1d6";
+
+    elseif (sheet.bodyAthleticsLevel == "2") then
+    sheet.bodyAthleticsDice = "2d6";
+
+    elseif (sheet.bodyAthleticsLevel == "3") then
+    sheet.bodyAthleticsDice = "3d6";
+
+    elseif (sheet.bodyAthleticsLevel == "4") then
+    sheet.bodyAthleticsDice = "4d6";
+
+    elseif (sheet.bodyAthleticsLevel == "5") then
+    sheet.bodyAthleticsDice = "5d6";
+
+    elseif (sheet.bodyAthleticsLevel == "6") then
+    sheet.bodyAthleticsDice = "6d6";
+
+    else
+    sheet.bodyAthleticsDice = "";
+
+    end;
+
+  </event>
+</dataLink>

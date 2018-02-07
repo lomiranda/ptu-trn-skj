@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="bodySurvivalLevel">
+  <event name="onChange">
+    if (sheet.bodySurvivalLevel == "1") then
+    sheet.bodySurvivalDice = "1d6";
+
+    elseif (sheet.bodySurvivalLevel == "2") then
+    sheet.bodySurvivalDice = "2d6";
+
+    elseif (sheet.bodySurvivalLevel == "3") then
+    sheet.bodySurvivalDice = "3d6";
+
+    elseif (sheet.bodySurvivalLevel == "4") then
+    sheet.bodySurvivalDice = "4d6";
+
+    elseif (sheet.bodySurvivalLevel == "5") then
+    sheet.bodySurvivalDice = "5d6";
+
+    elseif (sheet.bodySurvivalLevel == "6") then
+    sheet.bodySurvivalDice = "6d6";
+
+    else
+    sheet.bodySurvivalDice = "";
+
+    end;
+
+  </event>
+</dataLink>

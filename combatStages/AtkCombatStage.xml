@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataLink fields="{'trainerCmbtStgAtk', 'trainerAtk'}">
+  <event name="onChange">
+    if (sheet.trainerCmbtStgAtk == "0") then
+    sheet.trainerCmbtStgAtkVlr = 0.4;
+    elseif (sheet.trainerCmbtStgAtk == "1") then
+    sheet.trainerCmbtStgAtkVlr = 0.5;
+    elseif (sheet.trainerCmbtStgAtk == "2") then
+    sheet.trainerCmbtStgAtkVlr = 0.6;
+    elseif (sheet.trainerCmbtStgAtk == "3") then
+    sheet.trainerCmbtStgAtkVlr = 0.7;
+    elseif (sheet.trainerCmbtStgAtk == "4") then
+    sheet.trainerCmbtStgAtkVlr = 0.8;
+    elseif (sheet.trainerCmbtStgAtk == "5") then
+    sheet.trainerCmbtStgAtkVlr = 0.9;
+    elseif (sheet.trainerCmbtStgAtk == "6") then
+    sheet.trainerCmbtStgAtkVlr = 1;
+    elseif (sheet.trainerCmbtStgAtk == "7") then
+    sheet.trainerCmbtStgAtkVlr = 1.2;
+    elseif (sheet.trainerCmbtStgAtk == "8") then
+    sheet.trainerCmbtStgAtkVlr = 1.4;
+    elseif (sheet.trainerCmbtStgAtk == "9") then
+    sheet.trainerCmbtStgAtkVlr = 1.6;
+    elseif (sheet.trainerCmbtStgAtk == "10") then
+    sheet.trainerCmbtStgAtkVlr = 1.8;
+    elseif (sheet.trainerCmbtStgAtk == "11") then
+    sheet.trainerCmbtStgAtkVlr = 2;
+    elseif (sheet.trainerCmbtStgAtk == "12") then
+    sheet.trainerCmbtStgAtkVlr = 2.2;
+    end;
+	sheet.trainerTotalAtk = math.floor((sheet.trainerAtk or 1) * (sheet.trainerCmbtStgAtkVlr or 1));
+	sheet.trainerDamagePhysical = sheet.trainerTotalAtk;
+  </event>
+</dataLink>

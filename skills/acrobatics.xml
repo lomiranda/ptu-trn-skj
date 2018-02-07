@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="bodyAcroLevel">
+  <event name="onChange">
+    if (sheet.bodyAcroLevel == "1") then
+    sheet.bodyAcroDice = "1d6";
+
+    elseif (sheet.bodyAcroLevel == "2") then
+    sheet.bodyAcroDice = "2d6";
+
+    elseif (sheet.bodyAcroLevel == "3") then
+    sheet.bodyAcroDice = "3d6";
+
+    elseif (sheet.bodyAcroLevel == "4") then
+    sheet.bodyAcroDice = "4d6";
+
+    elseif (sheet.bodyAcroLevel == "5") then
+    sheet.bodyAcroDice = "5d6";
+
+    elseif (sheet.bodyAcroLevel == "6") then
+    sheet.bodyAcroDice = "6d6";
+
+    else
+    sheet.bodyAcroDice = "";
+
+    end;
+
+  </event>
+</dataLink>

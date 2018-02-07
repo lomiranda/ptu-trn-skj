@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="spiritCommandLevel">
+  <event name="onChange">
+    if (sheet.spiritCommandLevel == "1") then
+    sheet.spiritCommandDice = "1d6";
+
+    elseif (sheet.spiritCommandLevel == "2") then
+    sheet.spiritCommandDice = "2d6";
+
+    elseif (sheet.spiritCommandLevel == "3") then
+    sheet.spiritCommandDice = "3d6";
+
+    elseif (sheet.spiritCommandLevel == "4") then
+    sheet.spiritCommandDice = "4d6";
+
+    elseif (sheet.spiritCommandLevel == "5") then
+    sheet.spiritCommandDice = "5d6";
+
+    elseif (sheet.spiritCommandLevel == "6") then
+    sheet.spiritCommandDice = "6d6";
+
+    else
+    sheet.spiritCommandDice = "";
+
+    end;
+
+  </event>
+</dataLink>

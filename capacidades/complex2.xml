@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="bodyAcroLevel">
+  <event name="onChange">
+    if (sheet.bodyAcroLevel > "3") then
+    sheet.trainerJumpV = 1;
+    elseif (sheet.bodyAcroLevel > "5") then
+    sheet.trainerJumpV = 2;
+    else
+    sheet.trainerJumpV = 0;
+    end;
+  </event>
+</dataLink>

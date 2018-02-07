@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="bodyAthleticsLevel">
+  <event name="onChange">
+    if (sheet.bodyAthleticsLevel > "2") then
+    powerIncA = 1;
+    else
+    powerIncA = 0;
+    end;
+
+    sheet.trainerPower = math.floor( (powerIncA or 0) + (powerIncC or 0) + 4);
+  </event>
+</dataLink>

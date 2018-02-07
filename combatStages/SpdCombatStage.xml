@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataLink fields="{'trainerCmbtStgSpeed', 'trainerSpeed'}">
+  <event name="onChange">
+    if (sheet.trainerCmbtStgSpeed == "0") then
+    sheet.trainerCmbtStgSpeedVlr = 0.4;
+    elseif (sheet.trainerCmbtStgSpeed == "1") then
+    sheet.trainerCmbtStgSpeedVlr = 0.5;
+    elseif (sheet.trainerCmbtStgSpeed == "2") then
+    sheet.trainerCmbtStgSpeedVlr = 0.6;
+    elseif (sheet.trainerCmbtStgSpeed == "3") then
+    sheet.trainerCmbtStgSpeedVlr = 0.7;
+    elseif (sheet.trainerCmbtStgSpeed == "4") then
+    sheet.trainerCmbtStgSpeedVlr = 0.8;
+    elseif (sheet.trainerCmbtStgSpeed == "5") then
+    sheet.trainerCmbtStgSpeedVlr = 0.9;
+    elseif (sheet.trainerCmbtStgSpeed == "6") then
+    sheet.trainerCmbtStgSpeedVlr = 1;
+    elseif (sheet.trainerCmbtStgSpeed == "7") then
+    sheet.trainerCmbtStgSpeedVlr = 1.2;
+    elseif (sheet.trainerCmbtStgSpeed == "8") then
+    sheet.trainerCmbtStgSpeedVlr = 1.4;
+    elseif (sheet.trainerCmbtStgSpeed == "9") then
+    sheet.trainerCmbtStgSpeedVlr = 1.6;
+    elseif (sheet.trainerCmbtStgSpeed == "10") then
+    sheet.trainerCmbtStgSpeedVlr = 1.8;
+    elseif (sheet.trainerCmbtStgSpeed == "11") then
+    sheet.trainerCmbtStgSpeedVlr = 2;
+    elseif (sheet.trainerCmbtStgSpeed == "12") then
+    sheet.trainerCmbtStgSpeedVlr = 2.2;
+    end;
+	sheet.trainerTotalSpeed = math.floor((sheet.trainerSpeed or 1)  * (sheet.trainerCmbtStgSpeedVlr or 1));
+    sheet.trainerSpeedEvasion = math.floor(sheet.trainerTotalSpeed/5);
+    sheet.trainerInitiative = sheet.trainerTotalSpeed;
+  </event>
+</dataLink>

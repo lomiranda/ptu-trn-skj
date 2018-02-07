@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="mindPokeEdLevel">
+  <event name="onChange">
+    if (sheet.mindPokeEdLevel == "1") then
+    sheet.mindPokeEdDice = "1d6";
+
+    elseif (sheet.mindPokeEdLevel == "2") then
+    sheet.mindPokeEdDice = "2d6";
+
+    elseif (sheet.mindPokeEdLevel == "3") then
+    sheet.mindPokeEdDice = "3d6";
+
+    elseif (sheet.mindPokeEdLevel == "4") then
+    sheet.mindPokeEdDice = "4d6";
+
+    elseif (sheet.mindPokeEdLevel == "5") then
+    sheet.mindPokeEdDice = "5d6";
+
+    elseif (sheet.mindPokeEdLevel == "6") then
+    sheet.mindPokeEdDice = "6d6";
+
+    else
+    sheet.mindPokeEdDice = "";
+
+    end;
+
+  </event>
+</dataLink>

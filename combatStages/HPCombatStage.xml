@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataLink fields="{'trainerInjuriesQtd', 'trainerHP', 'trainerLevel'}">
+  <event name="onChange">
+	sheet.trainerTotalHP = sheet.trainerHP;
+	sheet.trainerAP = math.floor( 5 + ((sheet.trainerLevel or 1) / 5) );
+	sheet.fullPV = math.floor( ((sheet.trainerHP or 1) * 3) + ((sheet.trainerLevel or 1) * 2) + 10);
+	sheet.trainerMaxPV = math.floor(sheet.fullPV - ((sheet.fullPV / 10 ) * (sheet.trainerInjuriesQtd or 0)));
+  </event>
+</dataLink>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmProgress" height="40" margins="{top=2, right=5, bottom=2}">
+
+  <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="innerLine" strokeDash="dash" margins="{left=5, right=5}">
+
+    <!-- Bloco Horizontal -->
+    <!-- Nome e AC -->
+    <layout align="client" width="290" height="30" margins="{left=5, top=5, bottom=5}">
+      <label text="Nível:" width="40" fontSize="12" fontStyle="bold" align="left" margins="{left=5}"/>
+      <rectangle align="left" width="40" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+        <edit field="progressLevel" align="client" transparent="true" margins="{left=5, right=5}" horzTextAlign="center"/>
+      </rectangle>
+    </layout>
+
+    <layout align="client" width="120" height="50" margins="{left=105, top=5, bottom=5}">
+      <label text="Edge/Talento:" width="80" fontSize="12" fontStyle="bold" align="left" margins="{left=5}"/>
+      <rectangle align="left" width="130" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=2}">
+        <edit field="progressFeat" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+      </rectangle>
+    </layout>
+
+    <layout align="client" width="120" height="50" margins="{left=330, top=5, bottom=5}">
+      <label text="Stat. Pt.:" width="50" fontSize="12" fontStyle="bold" align="left" margins="{left=5}"/>
+      <rectangle align="left" width="80" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+        <edit field="progressStat" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+      </rectangle>
+    </layout>
+    <!-- Fim do Bloco Horizontal -->
+
+  </rectangle>
+
+  <button align="right" text="Apagar" width="60" onClick="ndb.deleteNode(sheet);"/>
+</form>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink fields="{'pokeNumber', 'pokeCaught'}">
+  <event name="onChange">
+    local node = ndb.getRoot(sheet);
+	local pokeSeenTotal = 0;
+	local pokeCaughtTotal = 0;
+	local nodes = ndb.getChildNodes(sheet.recDex);
+	
+	for i=1, #nodes, 1 do
+		pokeSeenTotal = pokeSeenTotal + 1;
+		if nodes[i].pokeCaught then
+			pokeCaughtTotal = pokeCaughtTotal +1;
+		end
+	end	
+	
+	sheet.trainerPokeSeen = pokeSeenTotal;
+	sheet.trainerPokeCaught = pokeCaughtTotal;
+	showMessage();
+  </event>
+</dataLink>

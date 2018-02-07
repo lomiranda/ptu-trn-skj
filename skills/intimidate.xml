@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="bodyIntimidateLevel">
+  <event name="onChange">
+    if (sheet.bodyIntimidateLevel == "1") then
+    sheet.bodyIntimidateDice = "1d6";
+
+    elseif (sheet.bodyIntimidateLevel == "2") then
+    sheet.bodyIntimidateDice = "2d6";
+
+    elseif (sheet.bodyIntimidateLevel == "3") then
+    sheet.bodyIntimidateDice = "3d6";
+
+    elseif (sheet.bodyIntimidateLevel == "4") then
+    sheet.bodyIntimidateDice = "4d6";
+
+    elseif (sheet.bodyIntimidateLevel == "5") then
+    sheet.bodyIntimidateDice = "5d6";
+
+    elseif (sheet.bodyIntimidateLevel == "6") then
+    sheet.bodyIntimidateDice = "6d6";
+
+    else
+    sheet.bodyIntimidateDice = "";
+
+    end;
+
+  </event>
+</dataLink>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="mindGenEdLevel">
+  <event name="onChange">
+    if (sheet.mindGenEdLevel == "1") then
+    sheet.mindGenEdDice = "1d6";
+
+    elseif (sheet.mindGenEdLevel == "2") then
+    sheet.mindGenEdDice = "2d6";
+
+    elseif (sheet.mindGenEdLevel == "3") then
+    sheet.mindGenEdDice = "3d6";
+
+    elseif (sheet.mindGenEdLevel == "4") then
+    sheet.mindGenEdDice = "4d6";
+
+    elseif (sheet.mindGenEdLevel == "5") then
+    sheet.mindGenEdDice = "5d6";
+
+    elseif (sheet.mindGenEdLevel == "6") then
+    sheet.mindGenEdDice = "6d6";
+
+    else
+    sheet.mindGenEdDice = "";
+
+    end;
+
+  </event>
+</dataLink>

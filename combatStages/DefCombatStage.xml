@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataLink fields="{'trainerCmbtStgDef', 'trainerDef'}">
+  <event name="onChange">
+    if (sheet.trainerCmbtStgDef == "0") then
+    sheet.trainerCmbtStgDefVlr = 0.4;
+    elseif (sheet.trainerCmbtStgDef == "1") then
+    sheet.trainerCmbtStgDefVlr = 0.5;
+    elseif (sheet.trainerCmbtStgDef == "2") then
+    sheet.trainerCmbtStgDefVlr = 0.6;
+    elseif (sheet.trainerCmbtStgDef == "3") then
+    sheet.trainerCmbtStgDefVlr = 0.7;
+    elseif (sheet.trainerCmbtStgDef == "4") then
+    sheet.trainerCmbtStgDefVlr = 0.8;
+    elseif (sheet.trainerCmbtStgDef == "5") then
+    sheet.trainerCmbtStgDefVlr = 0.9;
+    elseif (sheet.trainerCmbtStgDef == "6") then
+    sheet.trainerCmbtStgDefVlr = 1;
+    elseif (sheet.trainerCmbtStgDef == "7") then
+    sheet.trainerCmbtStgDefVlr = 1.2;
+    elseif (sheet.trainerCmbtStgDef == "8") then
+    sheet.trainerCmbtStgDefVlr = 1.4;
+    elseif (sheet.trainerCmbtStgDef == "9") then
+    sheet.trainerCmbtStgDefVlr = 1.6;
+    elseif (sheet.trainerCmbtStgDef == "10") then
+    sheet.trainerCmbtStgDefVlr = 1.8;
+    elseif (sheet.trainerCmbtStgDef == "11") then
+    sheet.trainerCmbtStgDefVlr = 2;
+    elseif (sheet.trainerCmbtStgDef == "12") then
+    sheet.trainerCmbtStgDefVlr = 2.2;
+    end;
+	sheet.trainerTotalDef = math.floor((sheet.trainerDef or 1) * (sheet.trainerCmbtStgDefVlr or 1));
+	sheet.trainerEvasion = math.floor(sheet.trainerTotalDef/5);
+  </event>
+</dataLink>

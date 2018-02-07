@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="mindPercepLevel">
+  <event name="onChange">
+    if (sheet.mindPercepLevel == "1") then
+    sheet.mindPercepDice = "1d6";
+
+    elseif (sheet.mindPercepLevel == "2") then
+    sheet.mindPercepDice = "2d6";
+
+    elseif (sheet.mindPercepLevel == "3") then
+    sheet.mindPercepDice = "3d6";
+
+    elseif (sheet.mindPercepLevel == "4") then
+    sheet.mindPercepDice = "4d6";
+
+    elseif (sheet.mindPercepLevel == "5") then
+    sheet.mindPercepDice = "5d6";
+
+    elseif (sheet.mindPercepLevel == "6") then
+    sheet.mindPercepDice = "6d6";
+
+    else
+    sheet.mindPercepDice = "";
+
+    end;
+
+  </event>
+</dataLink>

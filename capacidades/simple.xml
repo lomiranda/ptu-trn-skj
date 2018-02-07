@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink fields="{'bodyAcroLevel', 'bodyAthleticsLevel'}">
+  <event name="onChange">
+    sheet.trainerOverland = math.floor((((sheet.bodyAcroLevel or 0) + (sheet.bodyAthleticsLevel or 0)) / 2) + 3);
+    sheet.trainerSwim = math.floor(((((sheet.bodyAcroLevel or 0) + (sheet.bodyAthleticsLevel or 0)) / 2) + 3)/2);
+    sheet.trainerJumpH = math.floor((sheet.bodyAcroLevel or 1) / 2);
+    sheet.trainerThrow = math.floor((sheet.bodyAthleticsLevel or 1) + 4);
+  </event>
+</dataLink>

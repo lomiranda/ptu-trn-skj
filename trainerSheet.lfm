@@ -1,0 +1,1150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" dataType="br.com.shakerskj.ptu_trn"
+  title="PTU Trainer Sheet" name="frmPtuTrainer">
+  
+   <style>
+		label {
+			fontColor: Moccasin;
+			fontStyle: bold;
+		}
+		
+		edit {
+			fontColor: White;
+			fontStyle: bold;
+		}
+		
+		.titleLabel {
+			fontColor: Moccasin;
+			fontStyle: bold;
+			fontSize: 18;
+		}
+		
+		.conditionsLabel {
+			fontColor: Moccasin;
+			fontStyle: ;
+		}
+		
+		.roValues {
+			fontColor: Orange;
+			fontStyle: bold;
+		}
+		
+		.statsLegendRect {
+			sides: bottom;
+			corners: bottomRight bottomLeft;
+			color: transparent;
+			strokeColor: Moccasin;
+			strokeSize: 1;
+			xradius: 25;
+			yradius: 7;
+			cornerType: bevel;
+			strokeDash: dash;
+		}
+		
+		.statsRect {
+			 color: transparent;
+			 strokeColor: white;
+			 strokeSize: 1;
+			 xradius: 10;
+			 yradius: 10;
+			 cornerType: bevel;
+			 strokeDash: dash;
+		}
+		
+		.conditionsRect {
+			 color: transparent;
+			 strokeColor: white;
+			 strokeSize: 1;
+			 xradius: 10;
+			 yradius: 10;
+			 cornerType: innerLine;
+			 strokeDash: dash;
+		}
+		
+		.roRect {
+			 color: transparent;
+			 strokeColor: Orange;
+			 strokeSize: 1;
+			 xradius: 10;
+			 yradius: 10;
+			 cornerType: innerRound;
+			 strokeDash: dash;
+		}
+		
+		.rollBtn {
+			fontSize: 20;
+			fontColor: Orange;
+			left: 5;
+			top: 5;
+			height: 25;
+			width: 25;
+			align: left;
+		}
+	</style> 
+
+  <scrollBox left="10" top="10" width="600" height="250" align="client">
+    <flowLayout autoHeight="true" align="top" orientation="horizontal" horzAlign="center" margins="{top=8, left=20, right=20}">
+      <flowPart minWidth="600" maxWidth="600" height="750" adjustHeightToLine="true">
+
+        <layout name="topLayout" align="top" margins="{top=10, bottom=4, left=26, right=26}">
+          <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="25" yradius="25" cornerType="innerRound" strokeDash="dash">
+            <label text="-=| FICHA TREINADOR |=-" fontStyle="bold" fontSize="18" align="client" horzTextAlign="center"/>
+          </rectangle>
+        </layout>
+
+        <tabControl left="20" top="20" align="client">
+
+          <!-- Começo da Aba -->
+          <tab title="Identificação">
+            <layout name="bodyLayout" align="client">
+
+              <layout name="firstSection" align="top" height="310">
+                <rectangle align="client" class="statsRect" margins="{top=8, left=10, right=10}">
+
+                  <!-- Left BLock -->
+                  <!-- Imagem e Nome -->
+                  <layout name="infoSection" align="left" width="300" margins="{left=5, top=8}">
+					
+					<layout align="top" width="250" height="30" margins="{top=10,left=5}">
+                      <label text="Jogador:" align="left" width="80"/>
+						<rectangle align="left" width="200" class="statsRect" margins="{left=10}">
+							<edit field="trainerPlayer" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+						</rectangle>
+                    </layout>
+				  
+                    <layout align="top" width="250" height="30" margins="{top=10,left=5}">
+						<label text="Personagem:" align="left" width="80"/>
+						<rectangle align="left" width="200" class="statsRect" margins="{left=10}">
+							<edit field="trainerName" align="client" transparent="true" margins="{left=5,right=15}" horzTextAlign="center"/>
+							<layout align="right" width="20" margins="{top=5, right=10, bottom=5}">
+								<button align="client" text="i">
+									<event name="onClick">
+										local pop = self:findControlByName("trainerIDPopUp");
+									
+										if pop ~= nil then
+											pop:setNodeObject(self.sheet);
+											pop:showPopupEx("center", self.AtrBut);
+										else
+											showMessage("Ops, bug.. nao encontrei o popup do treinador para exibir");
+										end;
+									</event>
+								</button>
+							</layout>
+						</rectangle>
+						
+						<!-- POP UP DO ID TREINADOR -->
+						<popup name="trainerIDPopUp" width="450" height="600" backOpacity="0.5">
+							<label class="titleLabel" text="INFORMAÇÕES DO TREINADOR" align="top" height="50" horzTextAlign="center"/>
+							<layout align="top" width="250" height="40" margins="{top=10,left=5}">
+								<label text="Nome:" align="left" width="80" margins="{left=5}"/>
+								<rectangle align="left" width="200" class="statsRect" margins="{left=10}">
+									<edit field="trainerName" align="client" transparent="true" margins="{left=5,right=15}" horzTextAlign="center"/>
+								</rectangle>
+								<label text="Nível:" align="right" margins="{right=10}" width="45"/>
+								<rectangle align="right" width="50" class="statsRect" margins="{right=12}">
+								  <edit field="trainerLevel" align="client" type="number" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+								</rectangle>							
+							</layout>
+							<layout align="top" width="250" height="40" margins="{top=10,left=5}">
+								<label text="Gênero:" align="left" width="80" margins="{left=5}"/>
+								<rectangle align="left" width="200" class="statsRect" margins="{left=10}">
+									<edit field="trainerGender" align="client" transparent="true" margins="{left=5,right=15}" horzTextAlign="center"/>
+								</rectangle>
+								<label text="Idade:" align="right" margins="{right=10}" width="45"/>
+								<rectangle align="right" width="50" class="statsRect" margins="{right=12}">
+								  <edit field="trainerAge" align="client" type="number" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+								</rectangle>							
+							</layout>
+							<layout align="top" height="40" margins="{top=10, left=5}">
+								  <label text="Cidade:" width="80" align="left" margins="{left=5}"/>
+								  <rectangle align="left" width="330" class="statsRect" margins="{left=10}">
+									<edit field="trainerHomeCity" align="client" transparent="true" margins="{left=5,right=15}" horzTextAlign="center"/>
+								  </rectangle>		
+							</layout>
+							<layout align="top" height="40" margins="{top=10, left=5}">
+								  <label text="Peso [C]:" width="80" wordWrap="true" align="left" margins="{left=5}"/>
+								  <rectangle align="left" width="330" class="statsRect" margins="{left=10}">
+									<edit field="trainerWeight" align="client" transparent="true" margins="{left=5,right=15}" horzTextAlign="center"/>
+								  </rectangle>		
+							</layout>
+							<layout align="top" height="40" margins="{top=10, left=5}">
+								  <label text="Altura [C]:" width="80" align="left" margins="{left=5}"/>
+								  <rectangle align="left" width="330" class="statsRect" margins="{left=10}">
+									<edit field="trainerHeight" align="client" transparent="true" margins="{left=5,right=15}" horzTextAlign="center"/>
+								  </rectangle>		
+							</layout>
+							<layout align="top" height="100" margins="{top=10, left=5}">
+								  <label text="Personalidade:" fontSize="11" width="80" wordWrap="true" align="left" margins="{left=5}"/>
+								  <rectangle align="left" width="330" class="statsRect" margins="{left=10}">
+									<textEditor field="trainerPersonality" align="client" transparent="true" margins="{top=5, bottom=5, left=15, right=15}" horzTextAlign="leading"/>
+								  </rectangle>		
+							</layout>
+							<layout align="top" height="150" margins="{top=10, left=5}">
+								  <label text="História:" width="80" align="left" margins="{left=5}"/>
+								  <rectangle align="left" width="330" class="statsRect" margins="{left=10}">
+									<textEditor field="trainerHistory" align="client" transparent="true" margins="{top=5, bottom=5, left=15, right=15}" horzTextAlign="leading"/>
+								  </rectangle>		
+							</layout>
+						</popup>					
+					</layout>
+
+                    <layout align="top" width="250" height="30" margins="{top=10,left=5}">
+                      <label text="Background:" fontSize="12" align="left" width="80"/>
+						<rectangle align="left" width="200" class="statsRect" margins="{left=10}">
+							<edit field="trainerBackground" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+						</rectangle>
+                    </layout>
+					
+					<layout align="top" width="250" height="30" margins="{top=10,left=5}">
+                      <label text="Peso [C]:" align="left" width="80"/>
+						<rectangle align="left" width="200" class="statsRect" margins="{left=10}">
+							<edit field="trainerWeight" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+						</rectangle>
+                    </layout>
+
+                    <layout align="top" width="250" height="115" margins="{top=10,left=5}">
+                      <label text="Lesões:" align="left" width="80" vertTextAlign="center"/>
+					  <rectangle align="left" width="200" height="80" class="statsRect" margins="{left=10}">
+						<rectangle align="left" width="50" class="statsRect">
+							<comboBox field="trainerInjuriesQtd" text="Escolha" align="client" transparent="true" margins="{left=10}" horzTextAlign="center" items="{'0', '1', '2', '3', '4', '5'}" values="{'0', '1', '2', '3', '4', '5'}" value="0" fontColor="White"/>
+						</rectangle>
+						<textEditor field="trainerInjuries" align="client" transparent="true" margins="{left=5, right=5}" horzTextAlign="leading"/>
+					  </rectangle>						  
+                    </layout>
+
+                  </layout>
+                  <!-- Fim do Left BLock -->
+
+                  <!-- Right BLock -->
+                  <!-- Imagem e Nome -->
+                  <layout name="imageSection" align="right" width="250" margins="{top=8, right=15}">
+                    <layout align="top" height="250">
+						<rectangle align="client" color="white" strokeColor="black" strokeSize="1" cornerType="innerLine" strokeDash="dash">
+							<image field="trainerImage" editable="true" style="autoFit" left="5" top="5" width="240" height="240"/>
+						</rectangle>
+					</layout>
+					<layout align="top" height="30" margins="{top=5, left=5}">
+						<label text="Nível:" align="left" width="50"/>
+						<rectangle align="left" width="50" class="statsRect" margins="{left=5}">
+						  <edit field="trainerLevel" align="client" type="number" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+						</rectangle>
+						<label text="EXP: " align="left" width="30" margins="{left=15}"/>
+						<progressBar align="left" width="80" height="20" color="blue" hitTest="true" 
+						margins="{left=10}" colorMode="hl" field="trainerCurXP" fieldMax="trainerTrgtXP">
+							<event name="onClick">
+								local pop = self:findControlByName("xpPopUp");
+							
+								if pop ~= nil then
+									pop:setNodeObject(self.sheet);
+									pop:showPopupEx("center", self.AtrBut);
+								else
+									showMessage("Ops, bug.. nao encontrei o popup de XP para exibir");
+								end;
+							</event>
+						</progressBar>
+						
+						<!-- POPUP DE XP -->
+						<popup name="xpPopUp" width="420" height="110" backOpacity="0.5">
+							<label class="titleLabel" text="EXPERIÊNCIA" align="top" height="30" horzTextAlign="center"/>
+							<layout align="top" height="50" margins="{top=10}">
+								<rectangle align="left" width="170" class="statsRect" margins="{left=10}">
+									<edit field="trainerCurXP" align="client" transparent="true" margins="{left=10}" horzTextAlign="center"/>
+								</rectangle>
+								<label text="/" align="left" fontStyle="bold" fontSize="18" width="10" margins="{left=20}"/>
+								<rectangle align="left" width="170" class="statsRect" margins="{left=20}">
+									<edit field="trainerTrgtXP" align="client" transparent="true" margins="{left=10}" horzTextAlign="center"/>
+								</rectangle>
+							</layout>
+						</popup>
+						<!-- FIM DO POPUP DE XP -->
+						
+					</layout>
+                  </layout>
+                  <!-- Fim do Right BLock -->
+
+                </rectangle>
+              </layout>
+
+              <layout name="secondSection" align="top" height="340" margins="{top=5}">
+                <rectangle align="client" class="statsRect" margins="{top=8, bottom=4, left=10, right=10}">
+				
+                  
+                  <!-- AP E PV -->
+                  <layout name="statsSection1" align="top" height="30" margins="{top=5}">					
+                    <label text="Pontos Vida:" align="left" width="100" margins="{left=10}"/>
+                    <rectangle align="left" width="200" class="statsRect">
+						<edit field="trainerCurPV" align="left" width="80" type="number" transparent="true" horzTextAlign="center"/>
+                        <label text="/" fontSize="14" align="left" width="10" margins="{left=10, right=10}"/>
+                        <label field="trainerMaxPV" class="roValues" align="left" width="80" horzTextAlign="center" vertTextAlign="center"/>
+                    </rectangle>					  
+                    <label text="AP:" fontStyle="bold" align="left" width="30" margins="{left=20}"/>
+					<rectangle align="left" width="200" class="statsRect">
+						<edit field="trainerCurAP" align="left" width="80" type="number" transparent="true" margins="{left=5, right=5}" horzTextAlign="center"/>
+						<label text="/" fontSize="14" align="left" width="10" margins="{left=10, right=10}"/>
+						<label field="trainerAP" align="left" width="80" class="roValues" margins="{left=5, right=5}" horzTextAlign="center"/>
+					</rectangle>
+                  </layout>
+                  <!-- FIM DO PV E AP -->
+
+                  <!-- Right BLock -->
+                  <!-- Imagem e Nome -->
+				<layout name="stats" align="top" height="130" margins="{top=10}">
+					<rectangle align="client" class="statsRect" margins="{left=5, right=5}">
+					  <layout name="statsLine1" align="top" margins="{top=10}">
+					  
+						<layout align="left" width="180" height="30" margins="{right=5}">
+							<label text="HP:" fontStyle="bold" align="left" margins="{left=10}" width="60"/>
+							<rectangle align="left" width="60" class="roRect" margins="{left=10}">
+							  <label field="trainerTotalHP" class="roValues" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							</rectangle>
+							<popup name="hpPopUp" width="255" height="150" backOpacity="0.5">							
+								<label class="titleLabel" text="HP" align="top" height="30" horzTextAlign="center"/>
+								<layout align="top" height="150" margins="{top=10}">
+									<layout align="top" height="40" width="400" margins="{bottom=4}">
+										<label text="Total" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Valor" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Lesões" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+									</layout>
+									<layout align="top" margins="{bottom=4}">
+										<rectangle align="left" width="70" class="roRect" margins="{left=10}">
+											<label field="trainerTotalHP" class="roValues" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<edit field="trainerHP" type="number" transparent="true" fontStyle="bold" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<comboBox field="trainerInjuriesQtd" text="Escolha" align="client" transparent="true" margins="{left=10}" horzTextAlign="center" items="{'0', '1', '2', '3', '4', '5'}" values="{'0', '1', '2', '3', '4', '5',}" value="0" fontColor="White"/>
+										</rectangle>
+									</layout>
+								</layout>							
+							</popup>
+							<button align="left" text="i" width="20" margins="{left=5}">
+								<event name="onClick">
+									local pop = self:findControlByName("hpPopUp");
+								
+									if pop ~= nil then
+										pop:setNodeObject(self.sheet);
+										pop:showPopupEx("center", self.AtrBut);
+									else
+										showMessage("Ops, bug.. nao encontrei o popup de atributos para exibir");
+									end;
+								</event>
+							</button>
+						  </layout>
+						  
+						  <layout align="left" width="180" height="40" margins="{right=5}">
+							<label text="Attack:" fontStyle="bold" align="left" margins="{left=10}" width="60"/>
+							<rectangle align="left" width="60" class="roRect" margins="{left=10}">
+							  <label field="trainerTotalAtk" class="roValues" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							</rectangle>
+							<popup name="atkPopUp" width="255" height="150" backOpacity="0.5">							
+								<label class="titleLabel" text="ATTACK" align="top" height="30" horzTextAlign="center"/>
+								<layout align="top" height="150" margins="{top=10}">
+									<layout align="top" height="40" width="400" margins="{bottom=4}">
+										<label text="Total" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Valor" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Combat Stage" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+									</layout>
+									<layout align="top" margins="{bottom=4}">
+										<rectangle align="left" width="70" class="roRect" margins="{left=10}">
+											<label field="trainerTotalAtk" class="roValues" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<edit field="trainerAtk" transparent="true" fontStyle="bold" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<comboBox field="trainerCmbtStgAtk" text="Escolha" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center" items="{'-6', '-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'}" value="6" fontColor="White"/>
+										</rectangle>
+									</layout>
+								</layout>							
+							</popup>
+							<button align="left" text="i" width="20" margins="{left=5}">
+								<event name="onClick">
+									local pop = self:findControlByName("atkPopUp");
+								
+									if pop ~= nil then
+										pop:setNodeObject(self.sheet);
+										pop:showPopupEx("center", self.AtrBut);
+									else
+										showMessage("Ops, bug.. nao encontrei o popup de atributos para exibir");
+									end;
+								</event>
+							</button>
+						  </layout>
+						  
+						  <layout align="left" width="180" height="30" margins="{right=5}">
+							<label text="Defense:" fontStyle="bold" align="left" margins="{left=10}" width="60"/>
+							<rectangle align="left" width="60" class="roRect" margins="{left=10}">
+							  <label field="trainerTotalDef" class="roValues" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							</rectangle>
+							<popup name="defPopUp" width="255" height="150" backOpacity="0.5">							
+								<label class="titleLabel" text="DEFENSE" align="top" height="30" horzTextAlign="center"/>
+								<layout align="top" height="150" margins="{top=10}">
+									<layout align="top" height="40" width="400" margins="{bottom=4}">
+										<label text="Total" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Valor" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Stage Combat" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+									</layout>
+									<layout align="top" margins="{bottom=4}">
+										<rectangle align="left" width="70" class="roRect" margins="{left=10}">
+											<label field="trainerTotalDef" class="roValues" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<edit field="trainerDef" transparent="true" fontStyle="bold" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<comboBox field="trainerCmbtStgDef" text="Escolha" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center" items="{'-6', '-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'}" value="6" fontColor="White"/>
+										</rectangle>
+									</layout>
+								</layout>							
+							</popup>
+							<button align="left" text="i" width="20" margins="{left=5}">
+								<event name="onClick">
+									local pop = self:findControlByName("defPopUp");
+								
+									if pop ~= nil then
+										pop:setNodeObject(self.sheet);
+										pop:showPopupEx("center", self.AtrBut);
+									else
+										showMessage("Ops, bug.. nao encontrei o popup de atributos para exibir");
+									end;
+								</event>
+							</button>
+						  </layout>
+						  
+						</layout>
+						  
+						<layout name="statsLine2" align="top" margins="{top=10}">
+						  
+						  <layout align="left" width="180" height="30" margins="{right=5}">
+							<label text="Speed:" fontStyle="bold" align="left" margins="{left=10}" width="60"/>
+							<rectangle align="left" width="60" class="roRect" margins="{left=10}">
+							  <label field="trainerTotalSpeed" class="roValues" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							</rectangle>
+							<popup name="spdPopUp" width="255" height="150" backOpacity="0.5">							
+								<label class="titleLabel" text="SPEED" align="top" height="30" horzTextAlign="center"/>
+								<layout align="top" height="150" margins="{top=10}">
+									<layout align="top" height="40" width="400" margins="{bottom=4}">
+										<label text="Total" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Valor" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Stage Combat" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+									</layout>
+									<layout align="top" margins="{bottom=4}">
+										<rectangle align="left" width="70" class="roRect" margins="{left=10}">
+											<label field="trainerTotalSpeed" class="roValues" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<edit field="trainerSpeed" transparent="true" fontStyle="bold" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<comboBox field="trainerCmbtStgSpeed" text="Escolha" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center" items="{'-6', '-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'}" value="6" fontColor="White"/>
+										</rectangle>
+									</layout>
+								</layout>							
+							</popup>
+							<button align="left" text="i" width="20" margins="{left=5}">
+								<event name="onClick">
+									local pop = self:findControlByName("spdPopUp");
+								
+									if pop ~= nil then
+										pop:setNodeObject(self.sheet);
+										pop:showPopupEx("center", self.AtrBut);
+									else
+										showMessage("Ops, bug.. nao encontrei o popup de atributos para exibir");
+									end;
+								</event>
+							</button>
+						  </layout>
+						  
+						  <layout align="left" width="180" height="30" margins="{right=5}">
+							<label text="Sp. Attack:" fontStyle="bold" align="left" margins="{left=10}" width="60"/>
+							<rectangle align="left" width="60" class="roRect" margins="{left=10}">
+							  <label field="trainerTotalSpAtk" class="roValues" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							</rectangle>
+							<popup name="spAtkPopUp" width="255" height="150" backOpacity="0.5">							
+								<label class="titleLabel" text="SPECIAL ATTACK" align="top" height="30" horzTextAlign="center"/>
+								<layout align="top" height="150" margins="{top=10}">
+									<layout align="top" height="40" width="400" margins="{bottom=4}">
+										<label text="Total" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Valor" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Stage Combat" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+									</layout>
+									<layout align="top" margins="{bottom=4}">
+										<rectangle align="left" width="70" class="roRect" margins="{left=10}">
+											<label field="trainerTotalSpAtk" class="roValues" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<edit field="trainerSpAtk" transparent="true" fontStyle="bold" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<comboBox field="trainerCmbtStgSpAtk" text="Escolha" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center" items="{'-6', '-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'}" value="6" fontColor="White"/>
+										</rectangle>
+									</layout>
+								</layout>							
+							</popup>
+							<button align="left" text="i" width="20" margins="{left=5}">
+								<event name="onClick">
+									local pop = self:findControlByName("spAtkPopUp");
+								
+									if pop ~= nil then
+										pop:setNodeObject(self.sheet);
+										pop:showPopupEx("center", self.AtrBut);
+									else
+										showMessage("Ops, bug.. nao encontrei o popup de atributos para exibir");
+									end;
+								</event>
+							</button>
+						  </layout>
+						  
+						  <layout align="left" width="180" height="30" margins="{right=5}">
+							<label text="Sp. Defense:" fontStyle="bold" align="left" margins="{left=10}" width="60"/>
+							<rectangle align="left" width="60" class="roRect" margins="{left=10}">
+							  <label field="trainerTotalSpDef" class="roValues" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							</rectangle>
+							<popup name="spDefPopUp" width="255" height="150" backOpacity="0.5">							
+								<label class="titleLabel" text="SPECIAL DEFENSE" align="top" height="30" horzTextAlign="center"/>
+								<layout align="top" height="150" margins="{top=10}">
+									<layout align="top" height="40" width="400" margins="{bottom=4}">
+										<label text="Total" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Valor" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+										<label text="Stage Combat" fontStyle="bold" wordWrap="true" horzTextAlign="center" align="left" margins="{left=10}" width="70"/>
+									</layout>
+									<layout align="top" margins="{bottom=4}">
+										<rectangle align="left" width="70" class="roRect" margins="{left=10}">
+											<label field="trainerTotalSpDef" class="roValues" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<edit field="trainerSpDef" transparent="true" fontStyle="bold" align="client" horzTextAlign="center" width="40"/>
+										</rectangle>
+										<rectangle align="left" width="70" class="statsRect" margins="{left=10}">
+											<comboBox field="trainerCmbtStgSpDef" text="Escolha" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center" items="{'-6', '-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'}" value="6" fontColor="White"/>
+										</rectangle>
+									</layout>
+								</layout>							
+							</popup>
+							<button align="left" text="i" width="20" margins="{left=5}">
+								<event name="onClick">
+									local pop = self:findControlByName("spDefPopUp");
+								
+									if pop ~= nil then
+										pop:setNodeObject(self.sheet);
+										pop:showPopupEx("center", self.AtrBut);
+									else
+										showMessage("Ops, bug.. nao encontrei o popup de atributos para exibir");
+									end;
+								</event>
+							</button>
+						  </layout>
+
+						<layout align="client" margins="{top=120, right=140, bottom=140}">
+						  <label text="Ev.Fis.:" fontStyle="bold" align="left" width="50"/>
+						  <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5, right=2}">
+							<label field="trainerEvasion" align="client" margins="{left=5, right=5}" horzTextAlign="center"/>
+						  </rectangle>
+						</layout>
+						<layout align="client" margins="{left=140, top=120, bottom=140}">
+						  <label text="Ev.Esp.:" fontStyle="bold" align="left" width="50"/>
+						  <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5, right=2}">
+							<label field="trainerSpEvasion" align="client" margins="{left=5, right=5}" horzTextAlign="center"/>
+						  </rectangle>
+						</layout>
+
+						<layout align="client" margins="{left=70, top=160, right=70, bottom=100}">
+						  <label text="Ev.Vel.:" fontStyle="bold" align="left" width="50" margins="{left=1}"/>
+						  <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5, right=2}">
+							<label field="trainerSpeedEvasion" align="client" margins="{left=5, right=5}" horzTextAlign="center"/>
+						  </rectangle>
+						</layout>
+
+						<layout align="client" margins="{top=200,bottom=10}">
+						  <label text="Habilidades:" fontSize="10" fontStyle="bold" align="left" width="60" margins="{left=1}" vertTextAlign="center"/>
+						  <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="5" yradius="5" cornerType="bevel" strokeDash="dash" margins="{left=10, right=1}">
+							<textEditor field="trainerAbilities" align="client" transparent="true" margins="{left=5, right=5}" horzTextAlign="leading"/>
+						  </rectangle>
+						</layout>
+					  </layout>
+					  <!-- Fim do Right BLock -->
+
+
+					</rectangle>
+				</layout>
+				  
+				<!-- Bloco Horizontal -->
+                      <!-- Evasões -->
+					  <layout align="top" width="600" height="60" margins="top=10">
+						  <rectangle align="client" width="60" class="statsRect" margins="{left=5, right=5}">
+							<layout align="left" width="190" margins="{top=5, bottom=5}">
+							  <label text="Evasão Física:" fontStyle="bold" align="left" wordWrap="true" margins="{left=10}" width="80"/>
+							  <rectangle align="left" width="60" class="roRect" margins="{left=5}">
+								<label class="roValues" field="trainerEvasion" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							  </rectangle>
+							</layout>
+							<layout align="left" width="190" margins="{top=5, bottom=5}">
+							  <label text="Evasão Especial:" fontStyle="bold" align="left" wordWrap="true" margins="{left=30}" width="80"/>
+							  <rectangle align="left" width="60" class="roRect" margins="{left=5}">
+								<label class="roValues" field="trainerSpEvasion" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							  </rectangle>
+							</layout>
+							<layout align="left" width="190" margins="{top=5, bottom=5}">
+							  <label text="Evasão de Velocidade:" fontStyle="bold" align="left" wordWrap="true" margins="{left=30}" width="80"/>
+							  <rectangle align="left" width="60" class="roRect" margins="{left=5}">
+								<label class="roValues" field="trainerSpeedEvasion" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							  </rectangle>
+							</layout>
+						  </rectangle>
+					  </layout>
+                      <!-- Fim do Bloco Horizontal -->
+
+                      <!-- Bloco Horizontal -->
+                      <!-- Iniciativa, Dano Fisico e Dano Especial -->					  
+						<layout align="top" width="600" height="60" margins="top=10">
+						  <rectangle align="client" width="60" class="statsRect" margins="{left=5, right=5}">
+							<layout align="left" width="190" margins="{top=5, bottom=5}">
+							  <label text="Iniciativa:" fontStyle="bold" align="left" wordWrap="true" margins="{left=10}" width="80"/>
+							  <rectangle align="left" width="60" class="roRect" margins="{left=5}">
+								<label class="roValues" field="trainerInitiative" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							  </rectangle>
+							</layout>
+							<layout align="left" width="190" margins="{top=5, bottom=5}">
+							  <label text="Atk. Dano Físico:" fontStyle="bold" align="left" wordWrap="true" margins="{left=30}" width="80"/>
+							  <rectangle align="left" width="60" class="roRect" margins="{left=5}">
+								<label class="roValues" field="trainerDamagePhysical" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							  </rectangle>
+							</layout>
+							<layout align="left" width="190" margins="{top=5, bottom=5}">
+							  <label text="Atk. Dano Especial:" fontStyle="bold" align="left" wordWrap="true" margins="{left=30}" width="80"/>
+							  <rectangle align="left" width="60" class="roRect" margins="{left=5}">
+								<label class="roValues" field="trainerDamageSpecial" align="client" margins="{left=5,right=5}" horzTextAlign="center"/>
+							  </rectangle>
+							</layout>
+						  </rectangle>
+					  </layout>
+				</rectangle>
+				</layout>
+            </layout>
+          </tab>
+          <!-- Fim da Aba -->
+
+          <!-- Começo da Aba -->
+          <tab title="Skills">
+
+            <!-- Linha do topo -->
+            <layout name="firstStatRow" align="top" height="310" margins="{top=8, bottom=310}">
+
+              <!-- Left BLock -->
+              <!-- Espírito -->
+              <layout name="bodySection" align="right" width="280" margins="{right=15}">
+                <layout align="client" margins="{top=10,bottom=10}">
+                  <label text="CORPO" fontStyle="bold" align="top" width="60" margins="{left=1}" horzTextAlign="center"/>
+                  <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="round" strokeDash="dash" margins="{left=10, top=5, right=1}">
+
+                    <layout align="client" margins="{top=25, bottom=220}">
+                      <label text="Acrobacia:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="bodyAcroDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="bodyAcroLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=65, bottom=180}">
+                      <label text="Atletismo:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="bodyAthleticsDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="bodyAthleticsLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=105, bottom=140}">
+                      <label text="Combate:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="bodyCombatDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="bodyCombatLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=145, bottom=100}">
+                      <label text="Furtividade:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="bodyStealthDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="bodyStealthLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=185, bottom=60}">
+                      <label text="Intimidar:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="bodyIntimidateDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="bodyIntimidateLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=225, bottom=20}">
+                      <label text="Sobreviv.:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="bodySurvivalDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="bodySurvivalLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                  </rectangle>
+                </layout>
+              </layout>
+              <!-- Fim do Right BLock -->
+
+              <!-- Right BLock -->
+              <!-- Espírito -->
+              <layout name="spiritSection" align="right" width="280" margins="{right=15}">
+                <layout align="client" margins="{top=10,bottom=10}">
+                  <label text="ESPÍRITO" fontStyle="bold" align="top" width="60" margins="{left=1}" horzTextAlign="center"/>
+                  <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="round" strokeDash="dash" margins="{left=10, top=5, right=1}">
+
+                    <layout align="client" margins="{top=35, bottom=210}">
+                      <label text="Charme:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="spiritCharmDice" fontStyle="bold" align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="spiritCharmLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=95, bottom=150}">
+                      <label text="Comando:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="spiritCommandDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="spiritCommandLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=155, bottom=90}">
+                      <label text="Foco:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="spiritFocusDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="spiritFocusLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=215, bottom=30}">
+                      <label text="Intuição:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="spiritIntuitionDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="spiritIntuitionLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                  </rectangle>
+                </layout>
+              </layout>
+              <!-- Fim do Right BLock -->
+            </layout>
+            <!-- Fim da Linha do topo -->
+
+            <!-- Linha do final -->
+            <layout name="secondStatRow" align="bottom" height="320" margins="{top=340, bottom=8}">
+
+              <!-- Left BLock -->
+              <!-- Mente -->
+              <layout name="mindSection" align="right" width="280" margins="{right=15}">
+                <layout align="client" margins="{top=10,bottom=10}">
+                  <label text="MENTE" fontStyle="bold" align="top" width="60" margins="{left=1}" horzTextAlign="center"/>
+                  <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="round" strokeDash="dash" margins="{left=10, top=5, right=1}">
+
+                    <layout align="client" margins="{top=5, bottom=250}">
+                      <label text="Ed. Geral:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="mindGenEdDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="mindGenEdLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=45, bottom=210}">
+                      <label text="Medicina:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="mindMedEdDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="mindMedEdLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=85, bottom=170}">
+                      <label text="Ed. Oculta:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="mindOccEdDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="mindOccEdLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=125, bottom=130}">
+                      <label text="Ed. Poke:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="mindPokeEdDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="mindPokeEdLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=165, bottom=90}">
+                      <label text="Ed. Tech:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="mindTechEdDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="mindTechEdLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=205, bottom=50}">
+                      <label text="Astúcia:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="mindGuileDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="mindGuileLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=245, bottom=10}">
+                      <label text="Percep.:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="mindPercepDice" fontStyle="bold"  align="client" margins="{left=105, right=10}" horzTextAlign="trailing"/>
+                        <comboBox field="mindPercepLevel" text="Destreinado" align="client" transparent="true" margins="{left=5,right=55}" horzTextAlign="center" items="{'Patético', 'Destreinado', 'Noviço', 'Adepto', 'Expert', 'Mestre'}" values="{'1', '2', '3', '4', '5', '6'}" fontColor="White"/>
+                      </rectangle>
+                    </layout>
+
+                  </rectangle>
+                </layout>
+              </layout>
+              <!-- Fim do Left BLock -->
+
+              <!-- Right BLock -->
+              <!-- Capacidades -->
+              <layout name="capacitySection" align="right" width="280" margins="{right=15}">
+                <layout align="client" margins="{top=10,bottom=10}">
+                  <label text="CAPACIDADES" fontStyle="bold" align="top" width="60" margins="{left=1}" horzTextAlign="center"/>
+                  <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="round" strokeDash="dash" margins="{left=10, top=5, right=1}">
+
+                    <layout align="client" margins="{top=25, bottom=220}">
+                      <label text="Terra:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="trainerOverland" class="roValues"  align="client" margins="{left=10, right=10}" horzTextAlign="center"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=75, bottom=170}">
+                      <label text="Nado:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="trainerSwim" class="roValues"  align="client" margins="{left=10, right=10}" horzTextAlign="center"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=125, bottom=120}">
+                      <label text="Poder:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="trainerPower" class="roValues"  align="client" margins="{left=10, right=10}" horzTextAlign="center"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=175, bottom=70}">
+                      <label text="Arremesso:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=5}">
+                        <label field="trainerThrow" class="roValues"  align="client" margins="{left=10, right=10}" horzTextAlign="center"/>
+                      </rectangle>
+                    </layout>
+
+                    <layout align="client" margins="{top=225, bottom=20}">
+                      <label text="Salto V/H:" wordWrap="true" fontStyle="bold" align="left" width="70" margins="{left=10}"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=3, right=110}">
+                        <label field="trainerJumpV" class="roValues"  align="client" margins="{left=10, right=10}" horzTextAlign="center"/>
+                      </rectangle>
+                      <label text="/" fontStyle="bold"  align="client" margins="{left=80, right=80}" horzTextAlign="center"/>
+                      <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=110, right=5}">
+                        <label field="trainerJumpH" class="roValues"  align="client" margins="{left=10, right=10}" horzTextAlign="center"/>
+                      </rectangle>
+                    </layout>
+
+                  </rectangle>
+                </layout>
+              </layout>
+              <!-- Fim do Right BLock -->
+
+            </layout>
+            <!-- Fim da Linha do final -->
+
+          </tab>
+          <!-- Fim da Aba -->
+
+          <!-- Começo da Aba -->
+          <tab title="Edges">
+            <button left="5" top="5" height="25" align="top" text="Adicionar Edge" onClick="self.rclEdges:append();"/>
+            <scrollBox margins="{top=5}" align="client">
+                <recordList name="rclEdges" field="recEdges" templateForm="frmEdges" align="client" autoHeight="true">
+							<event name="onCompare"><![CDATA[               
+
+								if (nodeA.edgeLevel or 0) < (nodeB.edgeLevel or 0) then
+									return -1;
+								elseif (nodeA.edgeLevel or 0) > (nodeB.edgeLevel or 0) then
+									return 1;
+								else   
+									return utils.compareStringPtBr(nodeA.edgeName, nodeB.edgeName);
+								end;               
+
+								]]>
+							</event>
+						</recordList>
+            </scrollBox>
+          </tab>
+          <!-- Fim da Aba -->
+
+          <!-- Começo da Aba -->
+          <tab title="Features">		  
+			<tabControl left="20" top="20" align="client">
+			
+				<tab title="Features">	
+					<button left="5" top="5" height="25" align="top" text="Adicionar Talento" onClick="self.rclFeats:append();"/>
+					<scrollBox margins="{top=5}" align="client">
+						<recordList name="rclFeats" field="recFeats" templateForm="frmFeats" align="client" layout="vertical" minQt="1" autoHeight="true">
+							<event name="onCompare"><![CDATA[               
+
+								if (nodeA.featLevel or 0) < (nodeB.featLevel or 0) then
+									return -1;
+								elseif (nodeA.featLevel or 0) > (nodeB.featLevel or 0) then
+									return 1;
+								else   
+									return utils.compareStringPtBr(nodeA.featName, nodeB.featName);
+								end;               
+
+								]]>
+							</event>
+						</recordList>
+					</scrollBox>
+				</tab>
+
+				<!-- Começo da Aba -->
+				<tab title="Classes">
+					<button left="5" top="5" height="25" align="top" text="Adicionar Classe" onClick="self.rclClass:append();"/>
+					<scrollBox margins="{top=5}" align="client">
+						<recordList name="rclClass" field="recClass" templateForm="frmClass" align="client" autoHeight="true">
+							<event name="onCompare"><![CDATA[               
+
+								if (nodeA.classLevel or 0) < (nodeB.classLevel or 0) then
+									return -1;
+								elseif (nodeA.classLevel or 0) > (nodeB.classLevel or 0) then
+									return 1;
+								else   
+									return utils.compareStringPtBr(nodeA.className, nodeB.className);
+								end;               
+
+								]]>
+							</event>
+						</recordList>
+					</scrollBox>
+				</tab>
+				<!-- Fim da Aba -->				
+				
+			</tabControl>
+          </tab>
+          <!-- Fim da Aba -->
+
+          <!-- Começo da Aba -->
+          <tab title="Mochila">
+			<button height="25" align="top" text="Adicionar Item" onClick="self.rclBag:append();"/>
+            <layout align="top" margins="{left=10, top=10, right=300, bottom=5}" height="30">
+              <label text="Dinheiro:" fontStyle="bold" align="left" width="80"/>
+              <rectangle align="client" class="statsRect" margins="{left=5, right=2}">
+                <edit field="trainerMoney" align="client" type="number" transparent="true" margins="{left=5, right=5}" horzTextAlign="center"/>
+              </rectangle>
+            </layout>            
+            <scrollBox margins="{top=5}" align="client">
+              <flowLayout autoHeight="true" align="top" orientation="vertical" horzAlign="center" margins="{top=5, left=5, right=5}">
+                <flowPart minWidth="550" maxWidth="550" height="800" adjustHeightToLine="true">
+                  <layout align="client">
+                    <recordList name="rclBag" field="recBag" templateForm="frmBag" align="client" autoHeight="true"/>
+                  </layout>
+                </flowPart>
+              </flowLayout>
+            </scrollBox>
+          </tab>
+          <!-- Fim da Aba -->
+		  
+		  <!-- Começo da Aba -->
+		  <tab title="Moves">
+			<button left="5" top="5" height="25" align="top" text="Adicionar Move" onClick="self.rclMoves:append();"/>
+			<scrollBox margins="{top=5}" align="client">
+				<recordList name="rclMoves" field="recMoves" templateForm="frmMoves" align="client" layout="vertical" minQt="1" autoHeight="true"/>
+			</scrollBox>
+		  </tab>
+		  <!-- Fim da Aba -->
+		  
+		  <!-- Começo da Aba -->
+		  <tab title="Pokédex">			
+			<button align="top" height="25" text="Adicionar Entrada" onClick="self.rclDex:append();"/>
+			<layout align="top" width="170" height="30" margins="{top=5, bottom=5, left=15}">
+			
+				<label text="Capturados:" align="left" width="80"/>
+				<rectangle align="left" class="roRect" margins="{left=5}">
+					<label field="trainerPokeCaught" align="client" class="roValues" horzTextAlign="center"/>
+				</rectangle>
+				
+				<label text="Vistos:" align="left" width="80" margins="{left=80}"/>
+				<rectangle align="left" class="roRect" margins="{left=10}">
+					<label field="trainerPokeSeen" align="client" class="roValues" horzTextAlign="center"/>
+				</rectangle>
+				
+			</layout>
+			<layout align="client" top="35">
+				<scrollBox margins="{top=5}" align="client">
+					<recordList name="rclDex" field="recDex" templateForm="frmDex" align="client" layout="horizontalTiles" minQt="1" selectable="true">
+						<event name="onCompare"><![CDATA[               
+
+							if (nodeA.pokeNumber or 0) < (nodeB.pokeNumber or 0) then
+								return -1;
+							elseif (nodeA.pokeNumber or 0) > (nodeB.pokeNumber or 0) then
+								return 1;
+							else   
+								return utils.compareStringPtBr(nodeA.pokeSpecie, nodeB.pokeSpecie);
+							end;               
+
+							]]>
+						</event>
+						<event name="onItemAdded">
+							self.recalcDex();
+						</event>
+						<event name="onItemRemoved">
+							self.recalcDex();
+						</event>
+						<script>
+							function self.recalcDex()
+							
+								if sheet ~= nil then
+									local pokeSeenTotal = 0;
+									local pokeCaughtTotal = 0;
+									local nodes = ndb.getChildNodes(sheet.recDex);
+									
+									for i=1, #nodes, 1 do
+										pokeSeenTotal = pokeSeenTotal + 1;
+										if nodes[i].pokeCaught then
+											pokeCaughtTotal = pokeCaughtTotal +1;
+										end					
+									end	
+									sheet.trainerPokeSeen = pokeSeenTotal;
+									sheet.trainerPokeCaught = pokeCaughtTotal;								
+								end;
+							end
+						</script>
+					</recordList>
+				</scrollBox>
+			</layout>
+		  </tab>
+		  <!-- Fim da Aba -->
+		  
+          <!-- Começo da Aba >
+          <tab title="Progressão">
+            <button left="5" top="5" height="25" align="top" text="Adicionar Nível" onClick="self.rclProgress:append();"/>
+            <scrollBox margins="{top=5}" align="client">
+              <flowLayout autoHeight="true" align="top" orientation="vertical" horzAlign="center" margins="{top=5, left=5, right=5}">
+                <flowPart minWidth="550" maxWidth="550" height="1750" adjustHeightToLine="true">
+                  <layout align="client">
+                    <recordList name="rclProgress" field="recProgress" templateForm="frmProgress" align="client" autoHeight="true"/>
+                  </layout>
+                </flowPart>
+              </flowLayout>
+            </scrollBox>
+          </tab>
+          < Fim da Aba -->
+
+          <!-- Começo da Aba -->
+          <tab title="Anotações">
+			<layout align="top" height="325">
+				<rectangle align="left" width="280" class="statsRect" margins="{top=5, left=15, bottom=5}">
+					<textEditor field="pokeAnnotations" align="client" transparent="true" width="180" margins="{top=5, bottom=5, left=5, right=5}"/>
+				</rectangle>
+				<rectangle align="left" width="280" class="statsRect" margins="{top=5, left=10, bottom=5}">
+					<textEditor field="pokeAnnotations2" align="client" transparent="true" width="180" margins="{top=5, bottom=5, left=5, right=5}"/>
+				</rectangle>
+			</layout>
+			<layout align="top" height="325">
+				<rectangle align="left" width="280" class="statsRect" margins="{top=5, left=15, bottom=5}">
+					<textEditor field="pokeAnnotations3" align="client" transparent="true" width="180" margins="{top=5, bottom=5, left=5, right=5}"/>
+				</rectangle>
+				<rectangle align="left" width="280" class="statsRect" margins="{top=5, left=10, bottom=5}">
+					<textEditor field="pokeAnnotations4" align="client" transparent="true" width="180" margins="{top=5, bottom=5, left=5, right=5}"/>
+				</rectangle>
+			</layout>
+          </tab>
+          <!-- Fim da Aba -->
+		  
+		  <tab title="Calculations" visible="false">
+                    <label field="fullPV" align="client"/>
+					<label field="trainerCmbtStgHPVlr" align="client"/>
+                    <label field="trainerCmbtStgSpeedVlr" align="client"/>
+                    <label field="trainerCmbtStgAtkVlr" align="client"/>
+                    <label field="trainerCmbtStgDefVlr" align="client"/>
+                    <label field="trainerCmbtStgSpAtkVlr" align="client"/>
+                    <label field="trainerCmbtStgSpDefVlr" align="client"/>
+					<textEditor field="trainerPowers" align="client" width="200" left="25" top="10"/>
+          </tab>
+
+        <tab title="Plugin">
+			<rectangle align="client" width="100" class="statsRect" margins="{top=5, bottom=5, left=5, right=5}">
+		
+				<layout align="top" height="40" margins="{top=10, left=25}">
+					<label text="Versão:" class="titleLabel" align="left" width="80" horzTextAlign="leading"/>
+					<rectangle align="left" width="100" class="statsRect" strokeColor="orange" margins="{left=10}">
+						<label text="2.0" class="roValues" align="client" margins="{top=5, bottom=5, left=5, right=5}" horzTextAlign="center"/>
+					</rectangle>
+					<button text="Baixar Plugin" align="right" width="300" margins="{top=5, right=20}"
+							onClick="gui.openInBrowser('https://www.dropbox.com/s/nn4umeff9lp7ytm/PTU-TRN-SKJ.rpk?dl=0');" />
+				</layout>
+				
+				<label text="Originalmente desenvolvido para a mesa District League" align="top" width="600" height="40"
+					margins="{top=30}" horzTextAlign="center"/>				
+					
+				<layout align="top" height="410" margins="{top=10}">
+					<layout align="left" width="90" />
+					<rectangle align="left" width="410" color="white" strokeColor="black" strokeSize="1" cornerType="innerLine" strokeDash="dash">
+						<image src="img/district_league_logo.png" style="proportional" center="true" left="5" top="5" width="400" height="400" />
+					</rectangle>
+					<layout align="left" width="95" />
+				</layout>
+				
+				<button text="Conheça a Mesa" align="top" width="50" margins="{top=10, left=90, right=85}"
+					onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=137661');" />
+					
+				<label text="Design e Programação por Shakerskj" align="bottom" width="600" height="40"
+					margins="{top=10, left=25}" horzTextAlign="leading"/>
+			
+			</rectangle>
+					
+		</tab>
+		
+		</tabControl>
+
+      </flowPart>
+    </flowLayout>
+  </scrollBox>
+
+  <import file="skills/acrobatics.xml"/>
+  <import file="skills/athletism.xml"/>
+  <import file="skills/combat.xml"/>
+  <import file="skills/stealth.xml"/>
+  <import file="skills/intimidate.xml"/>
+  <import file="skills/survival.xml"/>
+  <import file="skills/charm.xml"/>
+  <import file="skills/command.xml"/>
+  <import file="skills/focus.xml"/>
+  <import file="skills/intuition.xml"/>
+  <import file="skills/genEd.xml"/>
+  <import file="skills/medEd.xml"/>
+  <import file="skills/occEd.xml"/>
+  <import file="skills/pokeEd.xml"/>
+  <import file="skills/techEd.xml"/>
+  <import file="skills/guile.xml"/>
+  <import file="skills/perception.xml"/>
+
+  <import file="capacidades/simple.xml"/>
+  <import file="capacidades/simple1.xml"/>
+  <import file="capacidades/complex.xml"/>
+  <import file="capacidades/complex1.xml"/>
+  <import file="capacidades/complex2.xml"/>
+  
+  <import file="combatStages/HPCombatStage.xml"/>
+  <import file="combatStages/AtkCombatStage.xml"/>
+  <import file="combatStages/DefCombatStage.xml"/>
+  <import file="combatStages/SpdCombatStage.xml"/>
+  <import file="combatStages/SpAtkCombatStage.xml"/>
+  <import file="combatStages/SpDefCombatStage.xml"/>
+
+</form>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmClass" height="40" margins="{top=5, right=5, bottom=5}">
+
+	<style>
+		label {
+			fontColor: Moccasin;
+			fontStyle: bold;
+		}
+		
+		edit {
+			fontColor: White;
+			fontStyle: bold;
+		}
+		
+		.titleLabel {
+			fontColor: Moccasin;
+			fontStyle: bold;
+			fontSize: 18;
+		}
+		
+		.conditionsLabel {
+			fontColor: Moccasin;
+			fontStyle: ;
+		}
+		
+		.roValues {
+			fontColor: Orange;
+			fontStyle: bold;
+		}
+		
+		.statsLegendRect {
+			sides: bottom;
+			corners: bottomRight bottomLeft;
+			color: transparent;
+			strokeColor: Moccasin;
+			strokeSize: 1;
+			xradius: 25;
+			yradius: 7;
+			cornerType: bevel;
+			strokeDash: dash;
+		}
+		
+		.statsRect {
+			 color: transparent;
+			 strokeColor: white;
+			 strokeSize: 1;
+			 xradius: 10;
+			 yradius: 10;
+			 cornerType: bevel;
+			 strokeDash: dash;
+		}
+		
+		.conditionsRect {
+			 color: transparent;
+			 strokeColor: white;
+			 strokeSize: 1;
+			 xradius: 10;
+			 yradius: 10;
+			 cornerType: innerLine;
+			 strokeDash: dash;
+		}
+		
+		.roRect {
+			 color: transparent;
+			 strokeColor: Orange;
+			 strokeSize: 1;
+			 xradius: 10;
+			 yradius: 10;
+			 cornerType: innerRound;
+			 strokeDash: dash;
+		}
+		
+		.rollBtn {
+			fontSize: 20;
+			fontColor: Orange;
+			left: 5;
+			top: 5;
+			height: 25;
+			width: 25;
+			align: left;
+		}
+	</style>
+
+<layout align="left" width="450" margins="{left=10}">
+  <rectangle align="client" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="innerLine" strokeDash="dash" margins="{left=5}">
+
+    <!-- Bloco Horizontal -->
+    <!-- Nome e AC -->
+    <layout align="left" width="250" height="30" margins="{left=5, top=5, bottom=5}">
+      <label text="Classe:" width="40" fontSize="12" fontStyle="bold" align="left" margins="{left=5}"/>
+      <rectangle align="left" width="190" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+        <edit field="className" align="client" transparent="true" margins="{left=5, right=5}" horzTextAlign="center"/>
+      </rectangle>
+    </layout>
+
+    <layout align="left" width="165" height="50" margins="{top=5, bottom=5}">
+      <label text="Nível:" width="40" fontSize="12" fontStyle="bold" align="left" margins="{left=5}"/>
+      <rectangle align="left" width="100" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+        <edit field="classLevel" align="client" type="number" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+      </rectangle>
+    </layout>
+    <!-- Fim do Bloco Horizontal -->
+
+  </rectangle>
+  </layout>
+  
+  <layout align="left" width="150" height="30" margins="{left=30, top=5, bottom=5}">  
+  <button align="left" text="i" hint="Informações da Classe" width="30">
+	<event name="onClick">
+		local pop = self:findControlByName("classPopUp");
+	
+		if pop ~= nil then
+			pop:setNodeObject(self.sheet);
+			pop:showPopupEx("center", self.AtrBut);
+		else
+			showMessage("Ops, bug.. nao encontrei o popup da Classe para exibir");
+		end;
+	</event>
+  </button>
+  
+	<button align="left" text="X" hint="Apagar Classe" width="30" margins="{left=10}">
+		<event name="onClick">
+		
+		Dialogs.confirmYesNo("Deseja realmente apagar este item?",
+			function (confirmado)
+					if confirmado then
+							ndb.deleteNode(sheet);
+					else
+							-- usuário escolheu NAO
+					end;
+			end);
+		</event>
+	</button>
+  
+  </layout>
+  
+ <popup name="classPopUp" width="500" height="400" backOpacity="0.5">
+
+		<!-- Bloco Horizontal -->
+		<!-- Nome e AC -->
+		<layout align="top" height="30" margins="{top=5, left=5}">
+		
+			  <label text="Nome:" width="60" fontSize="11" align="left" margins="{left=5}"/>
+			  <rectangle align="left" width="270" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+				<edit field="className" align="client" transparent="true" margins="{left=5, right=5}" horzTextAlign="center"/>
+			  </rectangle>
+			  
+			  <label text="Nv:" width="50" fontSize="12" align="left" margins="{left=25}"/>			  
+			  <rectangle align="left" width="50" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+				<edit field="classLevel" align="client" type="number" transparent="true" margins="{left=5, right=5}" horzTextAlign="center"/>
+			  </rectangle>
+			  
+		</layout>	
+		<!-- Fim do Bloco Horizontal -->
+		
+		<!-- Bloco Horizontal -->
+		<!-- Página e Nível Aprendido -->
+		<layout align="top" height="30" margins="{top=5, left=5}">
+		
+			  <label text="Requisitos:" width="60" fontSize="11" align="left" margins="{left=5}"/>
+			  <rectangle align="left" width="270" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+				<edit field="classReq" align="client" transparent="true" margins="{left=5, right=5}" horzTextAlign="center"/>
+			  </rectangle>
+			  
+			  <label text="Página:" width="50" fontSize="12" align="left" margins="{left=25}"/>			  
+			  <rectangle align="left" width="50" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+				<edit field="classPage" align="client" transparent="true" margins="{left=5, right=5}" horzTextAlign="center"/>
+			  </rectangle>
+			  
+		</layout>		
+		<!-- Fim do Bloco Horizontal --> 
+		
+		<!-- Bloco Horizontal -->
+		<!-- Classe e Frequencia -->
+		<layout align="top" height="30" margins="{left=5, top=5}">
+			<label text="Freq.:" width="60" fontSize="12" fontStyle="bold" align="left" margins="{left=5}"/>
+			<rectangle align="left" width="400" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+				<edit field="classFreq" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+			</rectangle>		
+		</layout>
+		
+		<layout align="top" height="30" margins="{top=5, left=5}">			
+			  <label text="Gatilho:" width="60" align="left" margins="{left=5}"/>
+			  <rectangle align="left" width="400" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+				<edit field="classTrigger" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+			  </rectangle>		
+		</layout>
+		
+		<layout align="top" height="30" margins="{top=5, left=5}">			
+			  <label text="Alvo:" width="60" align="left" margins="{left=5}"/>
+			  <rectangle align="left" width="400" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+				<edit field="classTarget" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+			  </rectangle>		
+		</layout>
+		
+		<layout align="top" height="30" margins="{top=5, left=5}">			
+			  <label text="AP:" width="60" align="left" margins="{left=5}"/>
+			  <rectangle align="left" width="400" color="transparent" strokeColor="white" strokeSize="1" xradius="10" yradius="10" cornerType="bevel" strokeDash="dash" margins="{left=5}">
+				<edit field="classAP" align="client" transparent="true" margins="{left=5,right=5}" horzTextAlign="center"/>
+			  </rectangle>		
+		</layout>
+		
+		<!-- Fim do Bloco Horizontal -->
+		
+		<!-- Bloco Horizontal -->
+		<!-- Efeito -->
+		<layout align="top" height="150" margins="{top=10, left=5}">
+			  <label text="Desc:" width="60" align="left" margins="{left=5}"/>
+			  <rectangle align="left" width="400" class="statsRect" margins="{left=5}">
+				<textEditor field="classDesc" align="client" transparent="true" margins="{left=5, right=5}" horzTextAlign="leading"/>
+			  </rectangle>		
+		</layout>
+		<!-- Fim do Bloco Horizontal -->
+		
+</popup>
+
+</form>

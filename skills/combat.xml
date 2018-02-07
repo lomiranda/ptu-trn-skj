@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Calculo de Acrobacia -->
+<dataLink field="bodyCombatLevel">
+  <event name="onChange">
+    if (sheet.bodyCombatLevel == "1") then
+    sheet.bodyCombatDice = "1d6";
+
+    elseif (sheet.bodyCombatLevel == "2") then
+    sheet.bodyCombatDice = "2d6";
+
+    elseif (sheet.bodyCombatLevel == "3") then
+    sheet.bodyCombatDice = "3d6";
+
+    elseif (sheet.bodyCombatLevel == "4") then
+    sheet.bodyCombatDice = "4d6";
+
+    elseif (sheet.bodyCombatLevel == "5") then
+    sheet.bodyCombatDice = "5d6";
+
+    elseif (sheet.bodyCombatLevel == "6") then
+    sheet.bodyCombatDice = "6d6";
+
+    else
+    sheet.bodyCombatDice = "";
+
+    end;
+
+  </event>
+</dataLink>
